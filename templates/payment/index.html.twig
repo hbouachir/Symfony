@@ -1,0 +1,47 @@
+{% extends 'footer.html.twig' %}
+{% block title%} Liste des payments{% endblock %}
+
+{% block body %}
+ {% if paymentt %}
+    <table id="payments" class="table table-striped">
+      <thead>
+      <tr>
+
+<th>numeroCompte</th>
+
+<th>dateExpiration</th>
+<th>civilite</th>
+<th>nom</th>
+<th>Action</th>
+
+</tr>
+      </thead>
+      <tbody>
+        {% for payment in paymentt %}
+         <tr>
+
+<td>{{payment.numeroCompte}}</td>
+
+<td>{{payment.dateExpiration | date }}</td>
+<td>{{payment.civilite}}</td>
+<td>{{payment.personne.nom}}</td>
+
+
+
+
+
+           <td>
+           
+              <a href="/payment/{{ payment.id }}" class="btn btn-success">Facture</a>
+              <a href="/payment/edit/{{ payment.id }}" class="btn btn-warning">Modifier</a>
+              <a href="/payment/delete/{{ payment.id }}" class="btn btn-danger" 
+              onclick="return confirm('Etes-vous sûr de supprimer  payment?');" >Supprimer</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Aucun payment</p>
+  {% endif %} 
+{% endblock %}
