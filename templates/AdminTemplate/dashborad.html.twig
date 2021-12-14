@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css"
+			  integrity="sha256-16PDMvytZTH9heHu9KBPjzrFTaoner60bnABykjNiM0=" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"
+				integrity="sha256-XOMgUu4lWKSn8CFoJoBoGd9Q/OET+xrfGYSo+AKpFhE=" crossorigin="anonymous"></script>
+		{% block stylesheets %}{% endblock %}
+        <title>{% block title %}{% endblock %}
+</title>
+        {% block head %}{% include('AdminTemplate/head.html.twig') %}{% endblock %}
+
+    </head>
+    <body>
+     <!-- begin app -->
+    <div class="app">
+        <!-- begin app-wrap -->
+        <div class="app-wrap">
+        
+        {% block header %}{% include('AdminTemplate/header.html.twig') %}{% endblock %}
+        {% block sidebar %}{% include('AdminTemplate/sidebar.html.twig') %}{% endblock %}
+        {% block body %}{% endblock %}
+        {% block footer %}{% include('AdminTemplate/footer.html.twig') %}{% endblock %}
+
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

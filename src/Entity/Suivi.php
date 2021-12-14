@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use App\Entity\Personne;
-use phpDocumentor\Reflection\Types\Integer;
 
 /**
  * Suivi
@@ -82,196 +80,125 @@ class Suivi
     /**
      * @var \Personne
      *
-     * @ORM\ManyToOne(targetEntity="Personne",inversedBy="suivis")
+     * @ORM\ManyToOne(targetEntity="Personne")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="idUser", referencedColumnName="id")
      * })
      */
     private $iduser;
 
-    /**
-     * @return int
-     */
-    public function getIdsuivi(): int
+    public function getIdsuivi(): ?int
     {
         return $this->idsuivi;
     }
 
-    /**
-     * @param int $idsuivi
-     * @return Suivi
-     */
-    public function setIdsuivi(int $idsuivi): Suivi
-    {
-        $this->idsuivi = $idsuivi;
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
     public function getDatesuivi(): ?string
     {
         return $this->datesuivi;
     }
 
-    /**
-     * @param string|null $datesuivi
-     * @return Suivi
-     */
-    public function setDatesuivi(?string $datesuivi): Suivi
+    public function setDatesuivi(?string $datesuivi): self
     {
         $this->datesuivi = $datesuivi;
+
         return $this;
     }
 
-
-
-    /**
-     * @return float|null
-     */
     public function getTaille(): ?float
     {
         return $this->taille;
     }
 
-    /**
-     * @param float|null $taille
-     * @return Suivi
-     */
-    public function setTaille(?float $taille): Suivi
+    public function setTaille(?float $taille): self
     {
         $this->taille = $taille;
+
         return $this;
     }
 
-    /**
-     * @return float|null
-     */
     public function getPoid(): ?float
     {
         return $this->poid;
     }
 
-    /**
-     * @param float|null $poid
-     * @return Suivi
-     */
-    public function setPoid(?float $poid): Suivi
+    public function setPoid(?float $poid): self
     {
         $this->poid = $poid;
+
         return $this;
     }
 
-    /**
-     * @return float|null
-     */
     public function getGlycemie(): ?float
     {
         return $this->glycemie;
     }
 
-    /**
-     * @param float|null $glycemie
-     * @return Suivi
-     */
-    public function setGlycemie(?float $glycemie): Suivi
+    public function setGlycemie(?float $glycemie): self
     {
         $this->glycemie = $glycemie;
+
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getPetitdej(): ?string
     {
         return $this->petitdej;
     }
 
-    /**
-     * @param string|null $petitdej
-     * @return Suivi
-     */
-    public function setPetitdej(?string $petitdej): Suivi
+    public function setPetitdej(?string $petitdej): self
     {
         $this->petitdej = $petitdej;
+
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getRepas(): ?string
     {
         return $this->repas;
     }
 
-    /**
-     * @param string|null $repas
-     * @return Suivi
-     */
-    public function setRepas(?string $repas): Suivi
+    public function setRepas(?string $repas): self
     {
         $this->repas = $repas;
+
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getDiner(): ?string
     {
         return $this->diner;
     }
 
-    /**
-     * @param string|null $diner
-     * @return Suivi
-     */
-    public function setDiner(?string $diner): Suivi
+    public function setDiner(?string $diner): self
     {
         $this->diner = $diner;
+
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getNotes(): ?string
     {
         return $this->notes;
     }
 
-    /**
-     * @param string|null $notes
-     * @return Suivi
-     */
-    public function setNotes(?string $notes): Suivi
+    public function setNotes(?string $notes): self
     {
         $this->notes = $notes;
+
         return $this;
     }
 
-    /**
-     * @return \Personne
-     */
     public function getIduser(): ?Personne
     {
         return $this->iduser;
     }
 
-    /**
-     * @param Personne $iduser
-     * @return Suivi
-     * self
-     */
-    public function setIduser(Personne $iduser):self
+    public function setIduser(?Personne $iduser): self
     {
         $this->iduser = $iduser;
+
         return $this;
     }
-
 
 
 }

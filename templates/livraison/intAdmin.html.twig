@@ -1,0 +1,178 @@
+{% extends 'back.html.twig' %}
+
+    {% block body %}
+
+
+
+
+<div class="app-content">
+    <div class="side-app">
+        <div class="page-header">
+            <h4 class="page-title">Liste des produits</h4>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#"><i class="fe   fe-box mr-1"></i> Tables</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Data Tables</li>
+            </ol>
+        </div>
+        {% for message in app.flashes('info') %}
+            <div class="aler alert-info">
+                {{ message }}
+            </div>
+        {% endfor %}
+        <div class="row">
+            <div class="col-md-18 col-lg-18">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Liste des produits</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="example" class="table table-striped table-bordered" >
+                                <thead>
+                                <tr>
+                                    <th class="wd-15p">Id Livraison</th>
+                                    <th class="wd-15p">Livreur</th>
+                                    <th>Date de Livraison</th>
+                                    <th>Etat de Livraison</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr {% for l in livraison %}>
+                                    <td>{{ l.idLivraison}}</td>
+                                    <td>{{ l.idlivreur }}</td>
+                                    <td>{{ l.datelivraison}}</td>
+                                    <td>{{ l.etatlivraison }}</td>
+
+                                    <td><a href="{{ path('updateD',{'id':l.idLivraison}) }}" class="remove">
+                                            Update
+                                        </a></td>
+                                    <td><a href="{{ path('suppD',{'id':l.idLivraison}) }}" class="remove">Delete
+                                            <i class="bx bx-trash"></i>
+                                        </a></td>
+                                </tr {% endfor %}>
+                                </tbody>
+                            </table>
+
+
+
+
+
+                            <table style="">
+                                <tr>
+                                    <td style="width: 50%;">
+                                        <div class="col-lg-4 col-sm-5">
+                                            <a href="{{ path('add') }}" class="btn btn-success">
+                                                <span>-Ajouter livraison</span>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="col-lg-4 col-sm-5">
+                                            <a href="{{ path('meilleur') }}" class="btn btn-success">
+                                                <span>-Meilleur Livreur</span>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+
+                                    <td>
+                                        <div class="col-lg-4 col-sm-5">
+                                            <a href="{{ path('recherche1') }}" class="btn btn-success">
+                                                <span>-Livraison livree</span>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+
+                                    <td>
+                                        <div class="col-lg-4 col-sm-5">
+                                            <a href="{{ path('recherche0') }}" class="btn btn-success">
+                                                <span>-Livraison non livree</span>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+
+                                    <td>
+                                        <div class="col-lg-4 col-sm-5">
+                                            <a href="{{ path('Affichedash') }}" class="btn btn-success">
+                                                <span>-Tous Livraisons</span>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+
+
+
+
+
+
+
+                            <div class="app-content">
+                                <div class="side-app">
+                                    <div class="page-header">
+                                        <h4 class="page-title"></h4>
+
+                                    </div>
+                                    <div id="div_chart"></div>
+
+                                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                                    <script type="text/javascript">
+                                        gc_draw(piechart, 'div_chart')
+                                    </script>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <!-- table-wrapper -->
+
+
+
+
+                        <!-- section-wrapper -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+
+            function validateSubmit() {
+                result = confirm("Êtes-vous sur de vouloir supprimer l'article ?");
+                if (result) {
+                    $('#form').submit();
+
+
+                }
+            }
+        </script>
+
+        {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

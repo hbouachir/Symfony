@@ -2,10 +2,7 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
-
 
 /**
  * Personne
@@ -13,7 +10,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Table(name="personne")
  * @ORM\Entity
  */
-class Personne implements UserInterface
+class Personne
 {
     /**
      * @var int
@@ -58,7 +55,6 @@ class Personne implements UserInterface
      * @ORM\Column(name="password", type="string", length=255, nullable=false)
      */
     private $password;
-
 
     /**
      * @var string|null
@@ -110,249 +106,226 @@ class Personne implements UserInterface
     private $mode;
 
     /**
-
-     * @ORM\OneToMany(targetEntity="Suivi",mappedBy="iduser",cascade={"all"},orphanRemoval=true)
-
+     * @var string|null
+     *
+     * @ORM\Column(name="image", type="string", length=255, nullable=true)
      */
-    private $suivis;
-public function __construct(){
-    $this->suivis=new ArrayCollection();
-}
+    private $image;
+
     /**
-     * @return int
+     * @var string|null
+     *
+     * @ORM\Column(name="zone", type="string", length=255, nullable=true)
      */
-    public function getId(): int
+    private $zone;
+
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="nombreLivraison", type="integer", nullable=true)
+     */
+    private $nombrelivraison;
+
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @param int $id
-     * @return Personne
-     */
-    public function setId(int $id): Personne
-    {
-        $this->id = $id;
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
     public function getNom(): ?string
     {
         return $this->nom;
     }
 
-    /**
-     * @param string $nom
-     * @return Personne
-     */
-    public function setNom(string $nom): Personne
+    public function setNom(string $nom): self
     {
         $this->nom = $nom;
+
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getPrenom():? string
+    public function getPrenom(): ?string
     {
         return $this->prenom;
     }
 
-    /**
-     * @param string $prenom
-     * @return Personne
-     */
-    public function setPrenom(string $prenom): Personne
+    public function setPrenom(string $prenom): self
     {
         $this->prenom = $prenom;
+
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getDatenaissance(): ?string
     {
         return $this->datenaissance;
     }
 
-    /**
-     * @param string|null $datenaissance
-     * @return Personne
-     */
-    public function setDatenaissance(?string $datenaissance): Personne
+    public function setDatenaissance(?string $datenaissance): self
     {
         $this->datenaissance = $datenaissance;
+
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getMail():? string
+    public function getMail(): ?string
     {
         return $this->mail;
     }
 
-    /**
-     * @param string $mail
-     * @return Personne
-     */
-    public function setMail(string $mail): Personne
+    public function setMail(string $mail): self
     {
         $this->mail = $mail;
+
         return $this;
     }
 
-    /**
-     * @return string|null the hashed password for this user
-     */
-    public function getPassword():? string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
 
-    /**
-     * @param string $password
-     * @return Personne
-     */
-    public function setPassword(string $password): Personne
+    public function setPassword(string $password): self
     {
         $this->password = $password;
+
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getAdresse(): ?string
     {
         return $this->adresse;
     }
 
-    /**
-     * @param string|null $adresse
-     * @return Personne
-     */
-    public function setAdresse(?string $adresse): Personne
+    public function setAdresse(?string $adresse): self
     {
         $this->adresse = $adresse;
+
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getReferenceclient(): ?int
     {
         return $this->referenceclient;
     }
 
-    /**
-     * @param int|null $referenceclient
-     * @return Personne
-     */
-    public function setReferenceclient(?int $referenceclient): Personne
+    public function setReferenceclient(?int $referenceclient): self
     {
         $this->referenceclient = $referenceclient;
+
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getNumero(): ?int
     {
         return $this->numero;
     }
 
-    /**
-     * @param int|null $numero
-     * @return Personne
-     */
-    public function setNumero(?int $numero): Personne
+    public function setNumero(?int $numero): self
     {
         $this->numero = $numero;
+
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getCivilite(): ?string
     {
         return $this->civilite;
     }
 
-    /**
-     * @param string|null $civilite
-     * @return Personne
-     */
-    public function setCivilite(?string $civilite): Personne
+    public function setCivilite(?string $civilite): self
     {
         $this->civilite = $civilite;
+
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getPrivilege(): ?string
     {
         return $this->privilege;
     }
 
-    /**
-     * @param string $privilege
-     * @return Personne
-     */
-    public function setPrivilege(string $privilege): Personne
+    public function setPrivilege(string $privilege): self
     {
         $this->privilege = $privilege;
+
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getMaladie(): ?string
     {
         return $this->maladie;
     }
 
-    /**
-     * @param string|null $maladie
-     * @return Personne
-     */
-    public function setMaladie(?string $maladie): Personne
+    public function setMaladie(?string $maladie): self
     {
         $this->maladie = $maladie;
+
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getMode(): ?int
     {
         return $this->mode;
     }
 
-    /**
-     * @param int|null $mode
-     * @return Personne
-     */
-    public function setMode(?int $mode): Personne
+    public function setMode(?int $mode): self
     {
         $this->mode = $mode;
+
         return $this;
     }
-    public function getSalt(){
-        return null;
+
+    public function getImage(): ?string
+    {
+        return $this->image;
     }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getZone(): ?string
+    {
+        return $this->zone;
+    }
+
+    public function setZone(?string $zone): self
+    {
+        $this->zone = $zone;
+
+        return $this;
+    }
+
+    public function getNombrelivraison(): ?int
+    {
+        return $this->nombrelivraison;
+    }
+
+    public function setNombrelivraison(?int $nombrelivraison): self
+    {
+        $this->nombrelivraison = $nombrelivraison;
+
+        return $this;
+    }
+
+    public function __toString() {
+        return ($this->nom." ".$this->prenom);
+    }
+
+    protected $captchaCode;
+
+    public function getCaptchaCode()
+    {
+        return $this->captchaCode;
+    }
+
+    public function setCaptchaCode($captchaCode)
+    {
+        $this->captchaCode = $captchaCode;
+    }
+
 
 }

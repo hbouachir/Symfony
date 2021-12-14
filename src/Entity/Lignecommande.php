@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Lignecommande
  *
- * @ORM\Table(name="lignecommande", indexes={@ORM\Index(name="codeProduit", columns={"codeProduit"}), @ORM\Index(name="id_Commande", columns={"idCommande"})})
+ * @ORM\Table(name="lignecommande", indexes={@ORM\Index(name="codeProduit", columns={"produit_id"}), @ORM\Index(name="id_Commande", columns={"commande_id"})})
  * @ORM\Entity
  */
 class Lignecommande
@@ -29,31 +29,65 @@ class Lignecommande
     private $quantite;
 
     /**
-     * @var float
-     *
-     * @ORM\Column(name="prix", type="float", precision=10, scale=0, nullable=false)
-     */
-    private $prix;
-
-    /**
      * @var \Produit
      *
      * @ORM\ManyToOne(targetEntity="Produit")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="codeProduit", referencedColumnName="codeProduit")
+     *   @ORM\JoinColumn(name="produit_id", referencedColumnName="codeProduit")
      * })
      */
-    private $codeproduit;
+    private $produit;
 
     /**
      * @var \Commande
      *
      * @ORM\ManyToOne(targetEntity="Commande")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idCommande", referencedColumnName="idCommande")
+     *   @ORM\JoinColumn(name="commande_id", referencedColumnName="idCommande")
      * })
      */
-    private $idcommande;
+    private $commande;
+
+    public function getIdligne(): ?int
+    {
+        return $this->idligne;
+    }
+
+    public function getQuantite(): ?int
+    {
+        return $this->quantite;
+    }
+
+    public function setQuantite(int $quantite): self
+    {
+        $this->quantite = $quantite;
+
+        return $this;
+    }
+
+    public function getProduit(): ?Produit
+    {
+        return $this->produit;
+    }
+
+    public function setProduit(?Produit $produit): self
+    {
+        $this->produit = $produit;
+
+        return $this;
+    }
+
+    public function getCommande(): ?Commande
+    {
+        return $this->commande;
+    }
+
+    public function setCommande(?Commande $commande): self
+    {
+        $this->commande = $commande;
+
+        return $this;
+    }
 
 
 }

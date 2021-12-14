@@ -1,0 +1,129 @@
+{% extends 'back.html.twig' %}
+{% block title%} Liste des factures{% endblock %}
+
+
+{% block body %}
+ <div id="container">
+<form>
+	
+		
+ {% if facturee %}
+  <form action="{{ path('S') }}">
+        <input type="text" placeholder="search" name="a">
+    <input type="submit" value="Search">
+</form>
+    <table id="factures" class="table table-striped">
+      <thead>
+      <tr>
+<th>id</th>
+<th>de</th>
+<th>NumeroFacture</th>
+<th>montant</th>
+<th>date</th>
+<th>designation</th>
+<th>Action</th>
+</tr>
+ </thead>
+      <tbody>
+        {% for facture in facturee %}
+         <tr>
+<td>{{facture.id}}</td>
+<td>{{facture.de}}</td>
+<td>{{facture.numeroFacture}}</td>
+<td>{{facture.montant }}</td>
+<td>{{facture.date | date }}</td>
+
+
+<td>{{facture.designation}}</td>
+            <td></td>
+            
+        </tr>
+          
+        
+									
+		
+    </tfoot>
+	
+
+
+
+
+
+<td class="trash">
+
+										<a href="/facture/delete/{{ facture.id }}" class="remove">
+											<i class="bx bx-trash"></i>
+										</a>
+									</td>
+
+       
+          </tr>
+        {% endfor %}
+		     </table> 
+      </tbody>
+  
+	
+	</form>
+	    <script src="https://js.stripe.com/v3/"></script>
+   
+	<a href="/facture/new" class="btn btn-warning">Ajouter Facture</a>
+	<a href="/affiche" class="btn btn-warning">Factures Des Clients</a>
+	</div>
+	
+  {% else %}
+    <p>Aucun facture</p>
+  {% endif %} 
+
+
+
+
+<style>/* Bordered form */
+form {
+    width:10%;
+    padding: 30px;
+  
+    background: #8A2BE2;
+   
+}
+#container{
+	 padding: 60px;
+    width:800px;
+    margin:0 auto;
+    margin-top:5%;
+}</style>
+
+    <head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- Bootstrap Min CSS --> 
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+		<!-- Owl Theme Default Min CSS --> 
+		<link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+		<!-- Owl Carousel Min CSS --> 
+		<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+		<!-- Boxicons Min CSS --> 
+		<link rel="stylesheet" href="assets/css/boxicons.min.css"> 
+		<!-- Flaticon CSS --> 
+		<link rel="stylesheet" href="assets/css/flaticon.css">
+		<!-- Meanmenu Min CSS -->
+		<link rel="stylesheet" href="assets/css/meanmenu.min.css">
+		<!-- Animate Min CSS --> 
+		<link rel="stylesheet" href="assets/css/animate.min.css">
+		<!-- Nice Select Min CSS -->
+		<link rel="stylesheet" href="assets/css/nice-select.min.css">
+		<!-- Date Picker CSS-->
+		<link rel="stylesheet" href="assets/css/date-picker.min.css">
+		<!-- Magnific Popup Min CSS --> 
+		<link rel="stylesheet" href="assets/css/magnific-popup.min.css"> 
+		<!-- Style CSS -->
+		<link rel="stylesheet" href="assets/css/style.css">
+		<!-- Responsive CSS -->
+		<link rel="stylesheet" href="assets/css/responsive.css">
+		
+
+
+{% endblock %}
+
+

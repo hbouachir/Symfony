@@ -1,4 +1,34 @@
 <!doctype html>
+{% block head %}{% include('AdminTemplate/head.html.twig') %}{% endblock %}
+
+</header>
+<!-- Start Shopping Cart Area -->
+<div class="shopping-cart-area wishlist-style ptb-100">
+
+
+    <div class="container">
+
+       
+   
+  
+    </div>
+    {% if app.session.flashBag.has('Notice') %}
+        <div class="alert alert-success">
+            {% for msg in app.session.flashBag.get('Notice') %}
+                {{ msg }}
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% if app.session.flashBag.has('INFO') %}
+        <div class="alert alert-success">
+            {% for msg in app.session.flashBag.get('INFO') %}
+                {{ msg }}
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+</body>
+<!doctype html>
 <html lang="zxx">
 <head>
     <!-- Required meta tags -->
@@ -6,37 +36,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap Min CSS -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css')}}">
     <!-- Owl Theme Default Min CSS -->
-    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/owl.theme.default.min.css')}}">
     <!-- Owl Carousel Min CSS -->
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.min.css')}}">
     <!-- Boxicons Min CSS -->
-    <link rel="stylesheet" href="assets/css/boxicons.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/boxicons.min.css')}}">
     <!-- Flaticon CSS -->
-    <link rel="stylesheet" href="assets/css/flaticon.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/flaticon.css')}}">
     <!-- Meanmenu Min CSS -->
-    <link rel="stylesheet" href="assets/css/meanmenu.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/meanmenu.min.css')}}">
     <!-- Animate Min CSS -->
-    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/animate.min.css')}}">
     <!-- Nice Select Min CSS -->
-    <link rel="stylesheet" href="assets/css/nice-select.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/nice-select.min.css')}}">
     <!-- Date Picker CSS-->
-    <link rel="stylesheet" href="assets/css/date-picker.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/date-picker.min.css')}}">
     <!-- Magnific Popup Min CSS -->
-    <link rel="stylesheet" href="assets/css/magnific-popup.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.min.css')}}">
     <!-- Style CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
     <!-- Responsive CSS -->
-    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/responsive.css')}}">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.png')}}">
     <!-- Title -->
-    <title>Aava - Diet & Nutrition Health Center HTML Template</title>
+    <title>{% block title %}Aava - Diet & Nutrition Health Center HTML Template{% endblock %}</title>
 </head>
 
-<body>
+
 <!-- Start Preloader Area -->
 <div class="preloader">
     <div class="lds-ripple">
@@ -51,7 +81,7 @@
 <!-- Start Header Area -->
 <header class="header-area">
     <!-- Start Top Header -->
-    <div class="top-header top-header-style-two">
+    <div class="top-header">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6">
@@ -60,29 +90,6 @@
                             <li>
                                 <i class="bx bx-phone-call"></i>
                                 <a href="tel:+1-(514)-312-5678">+1 (514) 312-5678</a>
-                            </li>
-                        </ul>
-
-                        <ul class="social-icon">
-                            <li>
-                                <a href="https://www.facebook.com/" target="_blank">
-                                    <i class="bx bxl-facebook"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.instagram.com/" target="_blank">
-                                    <i class="bx bxl-instagram"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.linkedin.com/" target="_blank">
-                                    <i class="bx bxl-linkedin-square"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://twitter.com/" target="_blank">
-                                    <i class="bx bxl-twitter"></i>
-                                </a>
                             </li>
                         </ul>
                     </div>
@@ -100,27 +107,27 @@
 
                                 <div class="dropdown-menu">
                                     <a href="#" class="dropdown-item">
-                                        <img src="{{asset('assets/images/language/english.png')}}" alt="Flag">
+                                        <img src="{{ asset('assets/images/language/english.png')}}" alt="Flag">
                                         <span>English</span>
                                     </a>
 
                                     <a href="#" class="dropdown-item">
-                                        <img src="{{asset('assets/images/language/arab.png')}}" alt="Flag">
+                                        <img src="{{ asset('assets/images/language/arab.png')}}" alt="Flag">
                                         <span>العربيّة</span>
                                     </a>
 
                                     <a href="#" class="dropdown-item">
-                                        <img src="{{asset('assets/images/language/germany.png')}}" alt="Flag">
+                                        <img src="{{ asset('assets/images/language/germany.png')}}" alt="Flag">
                                         <span>Germany</span>
                                     </a>
 
                                     <a href="#" class="dropdown-item">
-                                        <img src="{{asset('assets/images/language/portugues.png')}}" alt="Flag">
+                                        <img src="{{ asset('assets/images/language/portugues.png')}}" alt="Flag">
                                         <span>Português</span>
                                     </a>
 
                                     <a href="#" class="dropdown-item">
-                                        <img src="{{asset('assets/images/language/china.png')}}" alt="Flag">
+                                        <img src="{{ asset('assets/images/language/china.png')}}" alt="Flag">
                                         <span>简体中文</span>
                                     </a>
                                 </div>
@@ -129,11 +136,20 @@
 
                         <ul class="my-account">
                             <li>
-                                <a href="my-account.html">
+                             <a href="{{ path('profilC') }}" 
+                                
                                     <i class="bx bxs-user"></i>
                                     Account
                                 </a>
                             </li>
+                              <li>
+                             <a href="{{ path('des') }}" 
+                                
+                                    <i class="bx bxs-user"></i>
+                                    Desactiver
+                                </a>
+                            </li>
+                                
                             <li>
                                 <a href="shopping-cart.html" class="basket">
                                     <i class='bx bxs-cart-alt' ></i>
@@ -150,13 +166,13 @@
     <!-- Start Top Header -->
 
     <!-- Start Navbar Area -->
-    <div class="navbar-area navbar-area-style-three">
+    <div class="navbar-area">
         <div class="mobile-nav">
             <div class="container">
                 <div class="mobile-menu">
                     <div class="logo">
                         <a href="index.html">
-                            <img src="{{asset('assets/images/logo.png')}}" alt="logo">
+                            <img src="{{ asset('assets/images/logo.png')}}" alt="logo">
                         </a>
                     </div>
                 </div>
@@ -167,108 +183,30 @@
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
                     <a class="navbar-brand" href="index.html">
-                        <img src="{{asset('assets/images/logo.png')}}" alt="logo">
+                        <img src="{{ asset('assets/images/logo.png')}}" alt="logo">
                     </a>
 
                     <div class="collapse navbar-collapse mean-menu">
                         <ul class="navbar-nav m-auto">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="#" class="nav-link active">
                                     Home
                                     <i class="bx bx-chevron-down"></i>
                                 </a>
 
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item">
-                                        <a href="index.html" class="nav-link">Home One</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="index-2.html" class="nav-link">Home Two</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="index-3.html" class="nav-link">Home Three</a>
-                                    </li>
-                                </ul>
+                               
                             </li>
 
-                            <li class="nav-item">
-                                <a href="#" class="nav-link active">
-                                    Pages
-                                    <i class="bx bx-chevron-down"></i>
-                                </a>
+                            
+                                
 
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item">
-                                        <a href="about-us.html" class="nav-link">About Us</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">
-                                            Portfolio
-                                            <i class="bx bx-chevron-down"></i>
-                                        </a>
+                               
+                                    
+                                  
 
-                                        <ul class="dropdown-menu">
-                                            <li class="nav-item">
-                                                <a href="portfolio-column-two.html" class="nav-link">Portfolio Column Two</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="portfolio-column-three.html" class="nav-link">Portfolio Column Three</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="portfolio-column-four.html" class="nav-link">Portfolio Column Four</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="pricing.html" class="nav-link">Pricing</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="faq.html" class="nav-link">FAQ</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="privacy-policy.html" class="nav-link">Privacy Policy</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="terms-conditions.html" class="nav-link">Terms & Conditions</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link active">
-                                            User
-                                            <i class="bx bx-chevron-down"></i>
-                                        </a>
-
-                                        <ul class="dropdown-menu">
-                                            <li class="nav-item">
-                                                <a href="my-account.html" class="nav-link">My Account</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="{{ path('user_login')}}" class="nav-link active">Log In</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="{{ path('AjouC')}}" class="nav-link">Register</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="{{ path('NVPW')}}" class="nav-link">Recover Password</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="our-experts.html" class="nav-link">Our Experts</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="partner-details.html" class="nav-link">Partner Details</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="appointment.html" class="nav-link">Appointment</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="coming-soon.html" class="nav-link">Coming Soon</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="404.html" class="nav-link">404 Error Page</a>
-                                    </li>
-                                </ul>
-                            </li>
+                                       
+                                
+                              
 
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
@@ -278,57 +216,77 @@
 
                                 <ul class="dropdown-menu">
                                     <li class="nav-item">
-                                        <a href="services.html" class="nav-link">Services</a>
+                                     <a href="{{ path('L') }}"  class="nav-link">product</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="services-details.html" class="nav-link">Services Details</a>
+                                   
+                                        <a href="{{ path('chekout') }}"class="nav-link">Procédure de paiement </a>
                                     </li>
+                                     <li class="nav-item">
+                                   
+                                        <a href="{{ path('rendez_vous_new') }}"class="nav-link">Rendez-vous</a>
+                                    </li>
+                                    <li class="nav-item">
+                                   
+                                        <a href="#"class="nav-link">commande</a>
+                                    </li>
+                                     <li class="nav-item">
+                                   
+                                         <a href="{{ path('livraison') }}" class="nav-link">Livraisons</a>
+                                    </li>
+                                      <li class="nav-item">
+                                   
+                                         
+                                  
+      <a href="{{ path('AjouS') }}" class="btn btn-success" >AjouterSuivi</a>
+                                    </li>
+                                  
                                 </ul>
                             </li>
+                            
 
                             <li class="nav-item">
+                          
+
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item">
+                                        <a href="products.html" class="nav-link">produits</a>
+                                    </li>
+                                    
+                                   
+                                    
+                                </ul>
+                            </li>
+                             <li class="nav-item">
                                 <a href="#" class="nav-link">
-                                    Shop
+                                    suivi
                                     <i class="bx bx-chevron-down"></i>
                                 </a>
 
                                 <ul class="dropdown-menu">
                                     <li class="nav-item">
-                                        <a href="products.html" class="nav-link">Products</a>
+                                        <a href="products.html" class="nav-link">suivi</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a href=" {{ path('suivi')}}" class="nav-link">Suivis</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="shopping-cart.html" class="nav-link">Shopping cart</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="checkout.html" class="nav-link">Checkout</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="product-details.html" class="nav-link">Product Details</a>
-                                    </li>
+                                    
+                                   
+                                    
                                 </ul>
                             </li>
 
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    News
-                                    <i class="bx bx-chevron-down"></i>
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item">
-                                        <a href="news.html" class="nav-link">News</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="news-details.html" class="nav-link">News Details</a>
-                                    </li>
-                                </ul>
-                            </li>
+                         
 
                             <li class="nav-item">
                                 <a href="contact-us.html" class="nav-link">Contact Us</a>
+                            </li>
+                            
+     
+                             <li class="nav-item">
+                           
+                                <a href="{{ path('ASC') }}"  class="nav-link">liste </a>
+                            </li>
+                            <li class="nav-item">
+                           
+                                <a href="{{ path('profilC') }}"  class="nav-link">Shop </a>
                             </li>
                         </ul>
 
@@ -352,7 +310,7 @@
 
                             <div class="get-quote">
                                 <a href="appointment.html" class="default-btn">
-                                    Get Appointment
+                                     <h2>{{u.prenom  }} {{ u.nom }}</h2>
                                 </a>
                             </div>
                         </div>
@@ -360,7 +318,7 @@
                 </nav>
             </div>
         </div>
-
+        <body>{% block body %}
         <div class="others-option-for-responsive">
             <div class="container">
                 <div class="dot-menu">
@@ -401,21 +359,680 @@
                 </div>
             </div>
         </div>
+        </body>
     </div>
+
     <!-- End Navbar Area -->
 </header>
-<!-- Start Shopping Cart Area -->
-<div class="shopping-cart-area wishlist-style ptb-100">
-<div><h3>le client connecté a pour id = {{ app.session.get('id') }} </h3>
+<!-- End Header Area -->
 
-</div>
+
+
+        
+
+</section>
+<!-- End Hero Slider Area -->
+
+<!-- Start Expertise Area -->
+<section class="expertise-area pt-100 pb-70">
     <div class="container">
-        <a href="{{ path('AjouS') }}" class="btn btn-success" >AjouterSuivi</a>
+        <div class="section-title">
+            <h2>Our Main Areas of Expertise</h2>
+        </div>
 
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="single-expertise">
+                    <img src="{{ asset('assets/images/expertise/expertise-11.jpg')}}" alt="Image">
+
+                    <div class="expertise-title">
+                        <h3>Personal Nutrition</h3>
+                    </div>
+
+                    <div class="expertise-content">
+                        <h3>Personal Nutrition</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="single-expertise">
+                    <img src="{{ asset('assets/images/expertise/expertise-222.jpg')}}" alt="Image">
+
+                    <div class="expertise-title">
+                        <h3>Dietitian Nutritionists</h3>
+                    </div>
+
+                    <div class="expertise-content">
+                        <h3>Dietitian Nutritionists</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
+                <div class="single-expertise">
+                    <img src="{{ asset('assets/images/expertise/expertise-33.jpg')}}" alt="Image">
+
+                    <div class="expertise-title">
+                        <h3>Nutritious Lifestyle</h3>
+                    </div>
+
+                    <div class="expertise-content">
+                        <h3>Nutritious Lifestyle</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Expertise Area -->
+
+<!-- Start About Us Area -->
+<section class="about-us-area pb-100">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="about-img-content">
+                    <div class="about-img-1">
+                        <img src="{{ asset('assets/images/about/about-img-11.jpg')}}" alt="Image">
+                        <div class="about-img-2">
+                            <img src="{{ asset('assets/images/about/about-img-22.jpg')}}" alt="Image">
+                        </div>
+                    </div>
+
+                    <h3><span>25</span> Years of Experience</h3>
+
+                    <a href="https://www.youtube.com/watch?v=yH3CPw9HLY0" class="popup-youtube video">
+                        <div class="video-btn">
+                            <i class="flaticon-play-button-1"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="about-content">
+                    <span>About Aava</span>
+                    <h2>Better Eat, Better Life</h2>
+                    <h4>If You Get Better Nutrition, You Can Enjoy a Healthy Age</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus quaerat fuga ipsam temporibus reprehenderit libero earum autem, eius hic consequatur placeat ab eaque! Nostrum, exercitationem.</p>
+
+                    <h3>We Can Help You</h3>
+
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-6">
+                            <ul class="mb-20">
+                                <li>Low Energy</li>
+                                <li>Stress & Anxiety</li>
+                                <li>Poor Eating Habits</li>
+                                <li>Digestive Problems</li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-6 col-sm-6">
+                            <ul>
+                                <li>Balance Body & Mind</li>
+                                <li>Advice</li>
+                                <li>Workout Routines</li>
+                                <li>Protein</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <a href="about-us.html" class="default-btn">View More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="about-shape-img">
+        <img src="{{ asset('assets/images/about-shape.png')}}" alt="Image">
+    </div>
+</section>
+<!-- End About Us Area -->
+
+<!-- Start Why Choose Us Area -->
+<section class="why-choose-us-area bg-color ptb-100">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="why-choose-us-content">
+                    <span>Why Choose Us</span>
+                    <h2>The Nutrition Professionals</h2>
+
+                    <ul>
+                        <li>
+                            <span>1</span>
+                            <h3>Registered Dietitians</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </li>
+
+                        <li>
+                            <span>2</span>
+                            <h3>Nutrition Consultation</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </li>
+
+                        <li>
+                            <span>3</span>
+                            <h3>Individual Support</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </li>
+
+                        <li>
+                            <span>4</span>
+                            <h3>Disease Management</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            
+    </div>
+</section>
+<!-- End Why Choose Us Area -->²
+
+<!-- Start What We Offer Area -->
+<section class="what-we-offer-area pt-100 pb-70">
+    <div class="container">
+        <div class="section-title">
+            <span>What We Offer</span>
+            <h2>Our Diet & Nutrition Services</h2>
+        </div>
+
+        <div class="owl-carousel owl-theme what-we-offer-slider">
+            <div class="single-what-we-offer">
+                <a href="services-details.html">
+                    <img src="{{ asset('assets/images/what-we-offer/what-we-offer-1.jpg')}}" alt="Image">
+                </a>
+
+                <div class="what-we-offer-content">
+                    <h3>
+                        <a href="services-details.html">Nutrition Response Testing</a>
+                    </h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+                    <a href="services-details.html" class="read-more">Read More</a>
+                </div>
+            </div>
+
+            <div class="single-what-we-offer">
+                <a href="services-details.html">
+                    <img src="{{ asset('assets/images/what-we-offer/what-we-offer-2.jpg')}}" alt="Image">
+                </a>
+
+                <div class="what-we-offer-content">
+                    <h3>
+                        <a href="services-details.html">Weight Loss Program</a>
+                    </h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+                    <a href="services-details.html" class="read-more">Read More</a>
+                </div>
+            </div>
+
+            <div class="single-what-we-offer">
+                <a href="services-details.html">
+                    <img src="{{ asset('assets/images/what-we-offer/what-we-offer-3.jpg')}}" alt="Image">
+                </a>
+
+                <div class="what-we-offer-content">
+                    <h3>
+                        <a href="services-details.html">Nutrition Response Testing</a>
+                    </h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+                    <a href="services-details.html" class="read-more">Read More</a>
+                </div>
+            </div>
+
+            <div class="single-what-we-offer">
+                <a href="services-details.html">
+                    <img src="{{ asset('assets/images/what-we-offer/what-we-offer-4.jpg')}}" alt="Image">
+                </a>
+
+                <div class="what-we-offer-content">
+                    <h3>
+                        <a href="services-details.html">Clinical Nutrition</a>
+                    </h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+                    <a href="services-details.html" class="read-more">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End What We Offer Area -->
+
+<!-- Start Appointment Area -->
+<section class="appointment-area">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 pl-0">
+                <div class="appointment-img"></div>
+            </div>
+
+           
+
+                          
+                </div>
+            </div>
+        </div>
+ 
+</section>
+<!-- End Appointment Area -->
+
+<!-- Start Customer Story Area -->
+<section class="customer-story-area bg-color ptb-100">
+    <div class="container">
+        <div class="section-title">
+            <span>Customer Story</span>
+            <h2>Story of Success</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+
+        <div class="customer-story-slider owl-carousel owl-theme">
+            <div class="single-customer-story">
+                <img src="{{ asset('assets/images/customer-story/customer-story-img-1.jpg')}}" alt="Image">
+
+                <h2>Diet and Nutrition Improves Health</h2>
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consetetur magna aliquyam.</p>
+            </div>
+
+            <div class="single-customer-story">
+                <img src="{{ asset('assets/images/customer-story/customer-story-img-2.jpg')}}" alt="Image">
+
+                <h2>The Nutrition Professionals</h2>
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consetetur magna aliquyam.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Customer Story Area -->
+
+<!-- Start Team Area -->
+<section class="team-area pt-100 pb-70">
+    <div class="container">
+        <div class="section-title">
+            <span>Our Experts</span>
+            <h2>Diet & Nutrition Experts</h2>
+        </div>
+
+        <div class="owl-carousel owl-theme team-slider">
+            <div class="single-team">
+                <div class="team-img">
+                    <img src="{{ asset('assets/images/team/team-1.jpg')}}" alt="Image">
+
+                    <ul class="team-link">
+                        <li>
+                            <a href="#">
+                                <i class="bx bxl-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="bx bxl-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="bx bxl-pinterest-alt"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="bx bxl-instagram"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="team-content">
+                    <h3>Dr. Angela Russell</h3>
+                    <span>Diet & Nutrition</span>
+                </div>
+            </div>
+
+            <div class="single-team">
+                <div class="team-img">
+                    <img src="{{ asset('assets/images/team/team-2.jpg')}}" alt="Image">
+
+                    <ul class="team-link">
+                        <li>
+                            <a href="#">
+                                <i class="bx bxl-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="bx bxl-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="bx bxl-pinterest-alt"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="bx bxl-instagram"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="team-content">
+                    <h3>Dr. Russell Anderson</h3>
+                    <span>Nutritonist</span>
+                </div>
+            </div>
+
+            <div class="single-team">
+                <div class="team-img">
+                    <img src="{{ asset('assets/images/team/team-3.jpg')}}" alt="Image">
+
+                    <ul class="team-link">
+                        <li>
+                            <a href="#">
+                                <i class="bx bxl-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="bx bxl-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="bx bxl-pinterest-alt"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="bx bxl-instagram"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="team-content">
+                    <h3>Dr. Miriam Landau</h3>
+                    <span>Diet & Nutrition</span>
+                </div>
+            </div>
+
+            <div class="single-team">
+                <div class="team-img">
+                    <img src="{{ asset('assets/images/team/team-4.jpg')}}" alt="Image">
+
+                    <ul class="team-link">
+                        <li>
+                            <a href="#">
+                                <i class="bx bxl-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="bx bxl-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="bx bxl-pinterest-alt"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="bx bxl-instagram"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="team-content">
+                    <h3>Dr. Anna Smith</h3>
+                    <span>Nutritonist</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Team Area -->
+
+
+
+<!-- Start Healthy Life Area -->
+<section class="healthy-life-area ptb-100">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="healthy-life-img">
+                    <img src="{{ asset('assets/images/healthy-life-img.jpg')}}" alt="Image">
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="healthy-life-content">
+                    <h2>We Give You Inspiration For Living a Healthy Life</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida consectetur adipiscing.</p>
+
+                    <h3>Steps to Your Perfect Body</h3>
+
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-6">
+                            <ul class="mb-20">
+                                <li>Low Energy</li>
+                                <li>Stress & Anxiety</li>
+                                <li>Poor Eating Habits</li>
+                                <li>Digestive Problems</li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-6 col-sm-6">
+                            <ul>
+                                <li>Balance Body & Mind</li>
+                                <li>Advice</li>
+                                <li>Workout Routines</li>
+                                <li>Protein</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Healthy Life Area -->
+
+<!-- Start Our News Area -->
+<section class="our-news-area pt-100 pb-70">
+    <div class="container">
+        <div class="section-title">
+            <span>Our News</span>
+            <h2>Featured News And Advice</h2>
+        </div>
+
+        <div class="owl-carousel owl-theme news-slider">
+            <div class="single-news">
+                <a href="news-details.html">
+                    <img src="{{ asset('assets/images/news/news-1.jpg')}}" alt="Image">
+                </a>
+
+                <div class="news-content">
+                    <ul>
+                        <li>
+                            <i class="bx bxs-user"></i>
+                            <a href="#">Harold McLeod</a>
+                        </li>
+                        <li>
+                            <i class="bx bxs-calendar"></i>
+                            <span>Dec 04, 2020</span>
+                        </li>
+                    </ul>
+
+                    <h3>
+                        <a href="news-details.html">
+                            Tips to Help Support Your Nutritional Assessment
+                        </a>
+                    </h3>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+
+                    <a href="news-details.html" class="read-more">
+                        Read More
+                    </a>
+                </div>
+            </div>
+
+            <div class="single-news">
+                <a href="news-details.html">
+                    <img src="{{ asset('assets/images/news/news-2.jpg')}}" alt="Image">
+                </a>
+
+                <div class="news-content">
+                    <ul>
+                        <li>
+                            <i class="bx bxs-user"></i>
+                            <a href="#">James Stockton</a>
+                        </li>
+                        <li>
+                            <i class="bx bxs-calendar"></i>
+                            <span>Dec 05, 2020</span>
+                        </li>
+                    </ul>
+
+                    <h3>
+                        <a href="news-details.html">
+                            7 Steps to Stay Healthy During Times
+                        </a>
+                    </h3>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+
+                    <a href="news-details.html" class="read-more">
+                        Read More
+                    </a>
+                </div>
+            </div>
+
+            <div class="single-news">
+                <a href="news-details.html">
+                    <img src="{{ asset('assets/images/news/news-3.jpg')}}" alt="Image">
+                </a>
+
+                <div class="news-content">
+                    <ul>
+                        <li>
+                            <i class="bx bxs-user"></i>
+                            <a href="#">George Harris</a>
+                        </li>
+                        <li>
+                            <i class="bx bxs-calendar"></i>
+                            <span>Dec 06, 2020</span>
+                        </li>
+                    </ul>
+
+                    <h3>
+                        <a href="news-details.html">
+                            Top 5 Tips Why Selfcare is More Important
+                        </a>
+                    </h3>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+
+                    <a href="news-details.html" class="read-more">
+                        Read More
+                    </a>
+                </div>
+            </div>
+
+            <div class="single-news">
+                <a href="news-details.html">
+                    <img src="{{ asset('assets/images/news/news-4.jpg')}}" alt="Image">
+                </a>
+
+                <div class="news-content">
+                    <ul>
+                        <li>
+                            <i class="bx bxs-user"></i>
+                            <a href="#">Kliva Dew</a>
+                        </li>
+                        <li>
+                            <i class="bx bxs-calendar"></i>
+                            <span>Dec 07, 2020</span>
+                        </li>
+                    </ul>
+
+                    <h3>
+                        <a href="news-details.html">
+                            We Give You Inspiration For Living a Healthy Life
+                        </a>
+                    </h3>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+
+                    <a href="news-details.html" class="read-more">
+                        Read More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+<!-- End Our News Area -->
+
+<!-- Start Partner Area -->
+</body>
+<div class="partner-area bg-color ptb-100">
+    <div class="container">
+        <div class="partner-bg">
+            <div class="row">
+                <div class="partner-slider owl-carousel owl-theme">
+                    <div class="partner-item">
+                        <a href="partner-details.html">
+                            <img src="{{ asset('assets/images/partner/partner-1.png')}}" alt="Image">
+                        </a>
+                    </div>
+
+                    <div class="partner-item">
+                        <a href="partner-details.html">
+                            <img src="{{ asset('assets/images/partner/partner-2.png')}}" alt="Image">
+                        </a>
+                    </div>
+
+                    <div class="partner-item">
+                        <a href="partner-details.html">
+                            <img src="{{ asset('assets/images/partner/partner-3.png')}}" alt="Image">
+                        </a>
+                    </div>
+
+                    <div class="partner-item">
+                        <a href="partner-details.html">
+                            <img src="{{ asset('assets/images/partner/partner-4.png')}}" alt="Image">
+                        </a>
+                    </div>
+
+                    <div class="partner-item">
+                        <a href="partner-details.html">
+                            <img src="{{ asset('assets/images/partner/partner-5.png')}}" alt="Image">
+                        </a>
+                    </div>
+
+                    <div class="partner-item">
+                        <a href="partner-details.html">
+                            <img src="{{ asset('assets/images/partner/partner-3.png')}}" alt="Image">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-</body>
-<!-- End Shopping Cart Area -->
+
+<!-- End Partner Area -->
+
 <!-- Start Footer Area -->
 <footer class="footer-area pt-100 pb-70">
     <div class="container">
@@ -423,7 +1040,7 @@
             <div class="col-lg-3 col-md-6">
                 <div class="single-footer-widget">
                     <a href="index.html" class="logo">
-                        <img src="{{asset('assets/images/white-logo.png')}}" alt="Image">
+                        <img src="{{ asset('assets/images/logo.png')}}" alt="Image">
                     </a>
 
                     <ul class="open-close">
@@ -557,30 +1174,32 @@
 
 
 <!-- Jquery Min JS -->
+
 <script src="{{asset('assets/js/jquery.min.js')}}"></script>
 <!-- Bootstrap Bundle Min JS -->
-<script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{ asset('assets/js/bootstrap.bundle.min.js')}}"></script>
 <!-- Meanmenu Min JS -->
-<script src="{{asset('assets/js/meanmenu.min.js')}}"></script>
+<script src="{{ asset('assets/js/meanmenu.min.js')}}"></script>
 <!-- Owl Carousel Min JS -->
-<script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
+<script src="{{ asset('assets/js/owl.carousel.min.js')}}"></script>
 <!-- Wow Min JS -->
-<script src="{{asset('assets/js/wow.min.js')}}"></script>
+<script src="{{ asset('assets/js/wow.min.js')}}"></script>
 <!-- Nice Select Min JS -->
-<script src="{{asset('assets/js/nice-select.min.js')}}"></script>
+<script src="{{ asset('assets/js/nice-select.min.js')}}"></script>
 <!-- Magnific Popup Min JS -->
-<script src="{{asset('assets/js/magnific-popup.min.js')}}"></script>
+<script src="{{ asset('assets/js/magnific-popup.min.js')}}"></script>
 <!-- Mixitup Min JS -->
-<script src="{{asset('assets/js/mixitup.min.js')}}"></script>
+<script src="{{ asset('assets/js/mixitup.min.js')}}"></script>
 <!-- Datepicker Min JS -->
-<script src="{{asset('assets/js/bootstrap-datepicker.min.js')}}"></script>
+<script src="{{ asset('assets/js/bootstrap-datepicker.min.js')}}"></script>
 <!-- Form Validator Min JS -->
-<script src="{{asset('assets/js/form-validator.min.js')}}"></script>
+<script src="{{ asset('assets/js/form-validator.min.js')}}"></script>
 <!-- Contact JS -->
-<script src="{{asset('assets/js/contact-form-script.js')}}"></script>
+<script src="{{ asset('assets/js/contact-form-script.js')}}"></script>
 <!-- Ajaxchimp Min JS -->
-<script src="{{asset('assets/js/ajaxchimp.min.js')}}"></script>
+<script src="{{ asset('assets/js/ajaxchimp.min.js')}}"></script>
 <!-- Custom JS -->
-<script src="{{asset('assets/js/custom.js')}}"></script>
+<script src="{{ asset('assets/js/custom.js')}}"></script>
+
 
 </html>

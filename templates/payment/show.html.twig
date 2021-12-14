@@ -1,0 +1,278 @@
+{% extends 'back.html.twig' %}
+
+
+
+{% block body %}
+
+ <button type="button" class="btn btn-outline-warning"> <a href="/affiche">Retour</a></button>
+
+
+<div class="container">
+   <div class="row justify-content-center">
+       <div class="col-md-8">
+           <div class="w3-container w3-teal">
+             
+               <h5 style="text-align:center; margin-bottom: 2em;">ton facture </h5>
+               <!DOCTYPE html>
+               <html>
+               <head>
+               <meta name="viewport" content="width=device-width, initial-scale=1">
+              
+
+</head>
+<body>
+<!-- Begin Wrapper -->
+<div id="wrapper">
+  <div class="wrapper-top"></div>
+  <div class="wrapper-mid">
+    <!-- Begin Paper -->
+    <div id="paper">
+      <div class="paper-top"></div>
+      <div id="paper-mid">
+        <div class="entry">
+        
+         
+          <!-- Begin Personal Information -->          
+          <div class="self">
+              <span>SmartDiet</span></h1>
+            <ul>
+              <li class="ad">Ariena, Tunis , Rue11</li>
+              <li class="mail">SmartDiet@gmail.com</li>
+              <li class="tel">+216 22222222</li>
+              <li class="web">www.theFraternity.com</li>
+            </ul>
+          </div>
+         
+        
+
+
+        <div class="entry">
+            <h2> RIB Bancaire </h2>
+            <div class="content">
+         
+              <strong  style="color:Navy;text-align:center; margin-bottom: 0.5em;" >{{ payment.numeroCompte}}</strong>
+              <h3>civilite</h3>
+              <strong  style="color:Navy;text-align:center; margin-bottom: 0.5em;" >{{ payment.civilite}}</strong>
+        <h3>dateExpiration</h3>
+              <strong  style="color:Navy;text-align:center; margin-bottom: 0.5em;" >{{ payment.dateExpiration | date}}</strong>
+       <h3>Prix</h3>
+              <strong  style="color:Navy;text-align:center; margin-bottom: 0.5em;" >3</strong>
+
+
+        <p> Cachet & Signature  :</p> <br> <br>
+        <div class="container">
+          <div class="row">
+              
+              <div class="col-md-8 col-md-offset-2">
+                  <br>
+                 <!-- <?php echo isset($msg)?$msg:''; ?>-->
+                  <div id="sig"></div>
+                  <br>
+                  <button type="button" class="btn btn-danger" id="reset-btn">Clear</button>
+                   <a href="/paymentt/{{ payment.idpayment }}" class="btn btn-warning">IMPRIMER</a>
+                 
+              </div>
+              <form id="signatureform" action="" style="display:none" method="post">
+                  <input type="hidden" id="signature" name="signature">
+                  <input type="hidden" name="signaturesubmit" value="1">
+              </form>
+              </form>
+              
+          </div>
+      </div>
+        <br> <br>
+<style>
+   
+
+
+.form input[type=text], .form input[type=date]{
+border: none;
+border-bottom: 1px solid black;
+background-color: transparent;
+outline: none;
+height: 20px;
+display: 16px;
+color: black;
+margin-left: 50%;
+}
+.form input[type=submit], .form input[type=reset]{
+border: none;
+height: 40px;
+outline: none;
+font-size: 15px;
+background-color: rgb(80, 78, 78);
+cursor: pointer;
+border-radius: 20px;
+}
+</style>
+
+<script>
+    function myFunction() {
+      var input, filter, ul, li, a, i;
+      input = document.getElementById("mySearch");
+      filter = input.value.toUpperCase();
+      ul = document.getElementById("myMenu");
+      li = ul.getElementsByTagName("li");
+      for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          li[i].style.display = "";
+        } else {
+          li[i].style.display = "none";
+        }
+      }
+    }
+    </script>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+<script>
+   $(document).ready(() => {
+       var sig = document.getElementById('sig');
+       var canvas = document.createElement('canvas');
+       canvas.setAttribute('id', 'canvas');
+       sig.appendChild(canvas);
+       $("#canvas").attr('height', $("#sig").outerHeight());
+       $("#canvas").attr('width', $("#sig").width());
+       if (typeof G_vmlCanvasManager != 'undefined') {
+           canvas = G_vmlCanvasManager.initElement(canvas);
+       }
+       
+       context = canvas.getContext("2d");
+       $('#canvas').mousedown(function(e) {
+           var offset = $(this).offset()
+           var mouseX = e.pageX - this.offsetLeft;
+           var mouseY = e.pageY - this.offsetTop;
+
+           paint = true;
+           addClick(e.pageX - offset.left, e.pageY - offset.top);
+           redraw();
+       });
+
+       $('#canvas').mousemove(function(e) {
+           if (paint) {
+               var offset = $(this).offset()
+               //addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
+               addClick(e.pageX - offset.left, e.pageY - offset.top, true);
+               console.log(e.pageX, offset.left, e.pageY, offset.top);
+               redraw();
+           }
+       });
+
+       $('#canvas').mouseup(function(e) {
+           paint = false;
+       });
+
+       $('#canvas').mouseleave(function(e) {
+           paint = false;
+       });
+
+       var clickX = new Array();
+       var clickY = new Array();
+       var clickDrag = new Array();
+       var paint;
+
+       function addClick(x, y, dragging) {
+           clickX.push(x);
+           clickY.push(y);
+           clickDrag.push(dragging);
+       }
+
+       $("#reset-btn").click(function() {
+           context.clearRect(0, 0, window.innerWidth, window.innerWidth);
+           clickX = [];
+           clickY = [];
+           clickDrag = [];
+       });
+
+       $(document).on('click', '#btn-save', function() {
+           var mycanvas = document.getElementById('canvas');
+           var img = mycanvas.toDataURL("image/png");
+           anchor = $("#sign");
+           anchor.val(img);
+           $("#sig").submit();
+       });
+       var drawing = false;
+       var mousePos = {
+           x: 0,
+           y: 0
+       };
+       var lastPos = mousePos;
+       canvas.addEventListener("touchstart", function(e) {
+           mousePos = getTouchPos(canvas, e);
+           var touch = e.touches[0];
+           var mouseEvent = new MouseEvent("mousedown", {
+               clientX: touch.clientX,
+               clientY: touch.clientY
+           });
+           canvas.dispatchEvent(mouseEvent);
+       }, false);
+       canvas.addEventListener("touchend", function(e) {
+           var mouseEvent = new MouseEvent("mouseup", {});
+           canvas.dispatchEvent(mouseEvent);
+       }, false);
+       canvas.addEventListener("touchmove", function(e) {
+           var touch = e.touches[0];
+           var offset = $('#canvas').offset();
+           var mouseEvent = new MouseEvent("mousemove", {
+               clientX: touch.clientX,
+               clientY: touch.clientY
+           });
+           canvas.dispatchEvent(mouseEvent);
+       }, false);
+
+       // Get the position of a touch relative to the canvas
+       function getTouchPos(sig, touchEvent) {
+           var rect = sig.getBoundingClientRect();
+           return {
+               x: touchEvent.touches[0].clientX - rect.left,
+               y: touchEvent.touches[0].clientY - rect.top
+           };
+       }
+       var elem = document.getElementById("canvas");
+       var defaultPrevent = function(e) {
+           e.preventDefault();
+       }
+       elem.addEventListener("touchstart", defaultPrevent);
+       elem.addEventListener("touchmove", defaultPrevent);
+       function redraw() {
+           //
+           lastPos = mousePos;
+           for (var i = 0; i < clickX.length; i++) {
+               context.beginPath();
+               if (clickDrag[i] && i) {
+                   context.moveTo(clickX[i - 1], clickY[i - 1]);
+               } else {
+                   context.moveTo(clickX[i] - 1, clickY[i]);
+               }
+               context.lineTo(clickX[i], clickY[i]);
+               context.closePath();
+               context.stroke();
+           }
+       }
+   })
+
+</script>
+<style>
+ #sig{
+     position: relative;
+     border: 2px dashed grey;
+     height:150px;
+     width:300px;
+ }
+</style>
+
+ {% endblock %}
+
+
+
+
+         
+        
+   
+
+
+
+
+

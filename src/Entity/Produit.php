@@ -36,16 +36,16 @@ class Produit
     private $description;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="quantitÃ©", type="string", length=255, nullable=false)
+     * @ORM\Column(name="quantite", type="integer", nullable=false)
      */
-    private $quantitã©;
+    private $quantite;
 
     /**
-     * @var string
+     * @var float
      *
-     * @ORM\Column(name="prix", type="string", length=255, nullable=false)
+     * @ORM\Column(name="prix", type="float", precision=10, scale=0, nullable=false)
      */
     private $prix;
 
@@ -62,6 +62,83 @@ class Produit
      * @ORM\Column(name="categorie", type="string", length=255, nullable=false)
      */
     private $categorie;
+
+    public function getCodeproduit(): ?int
+    {
+        return $this->codeproduit;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getQuantite(): ?int
+    {
+        return $this->quantite;
+    }
+
+    public function setQuantite(int $quantite): self
+    {
+        $this->quantite = $quantite;
+
+        return $this;
+    }
+
+    public function getPrix(): ?float
+    {
+        return $this->prix;
+    }
+
+    public function setPrix(float $prix): self
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    public function getStatut(): ?string
+    {
+        return $this->statut;
+    }
+
+    public function setStatut(string $statut): self
+    {
+        $this->statut = $statut;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?string
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(string $categorie): self
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
 
 
 }

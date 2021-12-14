@@ -1,0 +1,47 @@
+{% extends 'Front1.html.twig' %}
+
+{% block title %}Edit Consultation{% endblock %}
+
+{% block body %}
+    <h1>Edit Consultation</h1>
+
+<div class="col-lg-12">
+        <div class="appointment-action ptb-100">
+
+
+                            {{ form_start(form, {'attr': {'id': 'form'}}) }}
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            Operation :<br>{{ form_widget(form.operation, {  'attr': {'class': 'form-group'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12">
+
+                        DateC :{{ form_widget(form.dateC, {  'attr': {'class': 'form-group'} }) }}
+
+                    </div>
+
+                    <div class="col-lg-12">
+                        Poids : <br>{{ form_widget(form.poids, {  'attr': {'class': 'form-group'} }) }}
+
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            Prix : <br>{{ form_widget(form.prix, {  'attr': {'class': 'form-group'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <input type="submit" value="Update" class="btn btn-success"/>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+
+        </div>
+    </div>
+
+
+{% endblock %}

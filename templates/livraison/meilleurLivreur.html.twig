@@ -1,0 +1,123 @@
+{% extends 'back.html.twig' %}
+
+    {% block body %}
+
+
+
+
+<div class="app-content">
+    <div class="side-app">
+        <div class="page-header">
+            <h4 class="page-title">Liste des produits</h4>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#"><i class="fe   fe-box mr-1"></i> Tables</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Data Tables</li>
+            </ol>
+        </div>
+        {% for message in app.flashes('info') %}
+            <div class="aler alert-info">
+                {{ message }}
+            </div>
+        {% endfor %}
+        <div class="row">
+            <div class="col-md-18 col-lg-18">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Liste des produits</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="example" class="table table-striped table-bordered" >
+                                <thead>
+                                <tr>
+                                    <th class="wd-15p">Nom</th>
+                                    <th class="wd-15p">Prenom</th>
+                                    <th>Zone</th>
+                                    <th style="color: darkred">Nombre des livraison</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <td>{{ livreur.nom}}</td>
+                                <td>{{ livreur.prenom }}</td>
+                                <td>{{ livreur.zone }}</td>
+                                <td>{{ livreur.nombreLivraison }}</td>
+
+
+
+
+
+                                </tbody>
+                            </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <div class="app-content">
+                                <div class="side-app">
+                                    <div class="page-header">
+                                        <h4 class="page-title"></h4>
+
+                                    </div>
+                                    <div id="div_chart"></div>
+
+                                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                                    <script type="text/javascript">
+                                        gc_draw(piechart, 'div_chart')
+                                    </script>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <!-- table-wrapper -->
+
+
+
+
+                        <!-- section-wrapper -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+
+            function validateSubmit() {
+                result = confirm("Êtes-vous sur de vouloir supprimer l'article ?");
+                if (result) {
+                    $('#form').submit();
+
+
+                }
+            }
+        </script>
+
+        {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

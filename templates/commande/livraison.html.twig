@@ -1,0 +1,135 @@
+{% extends 'Front1.html.twig' %}
+{% set totalHT = 0.000 %}
+{% set totalTTC = 0.000 %}
+{% set refTva = {} %}
+
+
+{% block body %}
+    <head>
+        <link type="text/css" rel="stylesheet" href="../front/css/BELstyle.css"/>
+
+        <link rel="stylesheet"
+              href="{{ asset('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('https://use.fontawesome.com/releases/v5.8.1/css/all.css	') }}">
+        <script src="{{ asset('https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js') }}"></script>
+
+    </head>
+{% block stylesheet %}
+    <style>
+        .nav-pills .nav-link.active .nav-pills .show>.nav-link {
+            background-color: red;
+        }
+
+    </style>
+{% endblock %}
+    <section id="contrat">
+        <div class="Assistance container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-xl-7 col-lg-8 col-md-9 col-11 ">
+
+                    <div class="card">
+                        <h5 style="color:#c71585 ">Etape 1: Confirmation de commande</h5>
+                        <div class="row d-flex align-items-center justify-content-center h-100">
+                            <div class="col-md-12 col-lg-12 col-xl-12">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Produit</th>
+                                        <th>Nom</th>
+                                        <th>Prix</th>
+                                        <th>Quantite</th>
+                                        <th>Total</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for produit in produits %}
+                                        <tr>
+                                            <td><img style="height: 50px;width: 50px" class="img-fluid"
+                                                     src=""
+                                                     alt=""/></td>
+                                            <td>{{ produit.produit.nom }}</td>
+                                            <td>{{ produit.produit.categorie }}</td>
+
+                                            <td id="prix">{{ produit.produit.prix }}</td>
+                                            <td>
+                                                {{ produit.quantite }}
+                                            </td>
+
+                                            <td style="font-weight: bold;">{{ produit.quantite * produit.produit.prix }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    <tr>
+                                        <td colspan="5" class="text-right" style="font-weight:bold">Timbre Fiscal :
+                                        </td>
+                                        <td style="font-weight: bold;">0.600 DT</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" class="text-right"><strong>Total :</strong></td>
+                                        {% set total = total + 0.600 %}
+                                        <td style="color:red;font-weight: bold;">{{ total }} DT</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-footer">
+                            {#  <button type="button"
+                                                                            class="subscribe btn-block">
+                                                                      Confirmer paiement
+                                                                    </button>  #}
+                            <a href="{{ path('commandeConfirmer') }}" type="button"
+                               class=" btn subscribe btn-block">
+                                Confirmer paiement
+                            </a>
+
+                        </div>
+                        <div class="row">
+                            <input type="checkbox" id="condition">
+                            <a href="#"> J'ai lu et approuvé les Termes & Conditions de vente </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+
+        v1 = document.getElementById('agence');
+        v2 = document.getElementById('carteB');
+        v3 = document.getElementById('aramex');
+        document.getElementById("agenceBlock").hidden = true;
+
+        // handle button click
+        v1.onclick = function () {
+
+            document.getElementById("agenceBlock").hidden = false;
+            document.getElementById("carteBlock").hidden = true;
+        }
+
+
+        v2.onclick = function () {
+
+            document.getElementById("agenceBlock").hidden = true;
+            document.getElementById("carteBlock").hidden = false;
+        }
+        v3.onclick = function () {
+
+            document.getElementById("agence").hidden = hidden;
+        }
+
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+  
+{% endblock %}
+
+
+

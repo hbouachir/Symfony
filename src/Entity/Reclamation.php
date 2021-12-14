@@ -29,9 +29,9 @@ class Reclamation
     private $description;
 
     /**
-     * @var string
+     * @var string|null
      *
-     * @ORM\Column(name="typeReclamation", type="string", length=255, nullable=false)
+     * @ORM\Column(name="typeReclamation", type="string", length=255, nullable=true)
      */
     private $typereclamation;
 
@@ -44,6 +44,59 @@ class Reclamation
      * })
      */
     private $idpersonne;
+
+    public function getIdreclamation(): ?int
+    {
+        return $this->idreclamation;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getTypereclamation(): ?string
+    {
+        return $this->typereclamation;
+    }
+
+    public function setTypereclamation(?string $typereclamation): self
+    {
+        $this->typereclamation = $typereclamation;
+
+        return $this;
+    }
+
+    public function getIdpersonne(): ?Personne
+    {
+        return $this->idpersonne;
+    }
+
+    public function setIdpersonne(?Personne $idpersonne): self
+    {
+        $this->idpersonne = $idpersonne;
+
+        return $this;
+    }
+
+    protected $captchaCode;
+
+    public function getCaptchaCode()
+    {
+        return $this->captchaCode;
+    }
+
+    public function setCaptchaCode($captchaCode)
+    {
+        $this->captchaCode = $captchaCode;
+    }
 
 
 }

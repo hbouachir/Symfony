@@ -1,0 +1,121 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Ajouter payment{% endblock %}
+{% block body %}
+
+
+
+  <div id="fh5co-trainer">
+		<div class="container">
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+					<h2>Ajouter ce Formulair</h2>
+					
+				</div>
+			</div>
+ 
+{{ form_start(form,{'attr':{'novalidate' : 'novalidate' }}) }}
+	
+	<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<div class="display-t">
+					
+ {{ form_widget(form) }}
+ {{ form_end(form) }}
+					</div>
+				</div>
+			</div>
+		</div>
+
+       
+		
+
+	<style>
+	
+
+#container{
+    width:350px;
+    margin:0 auto;
+    margin-top:5%;
+}
+/* Bordered form */
+form {
+    width:100%;
+    padding: 30px;
+  
+    background: #8A2BE2;
+    box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+
+/* Full-width inputs */
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+input[type=submit] {
+    background-color:#800080;
+    color: white;
+    padding: 14px 20px;
+    margin: 40px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+input[type=submit]:hover {
+    background-color: white;
+    color: #800080;
+    border: 1px solid #800080;
+}
+	<script>	//Validtion Code For Inputs
+
+    var de = document.forms['form']['de'];
+   
+    
+    var de_error = document.getElementById('de_error');
+   
+    
+    de.addEventListener('textInput', de_Verify);
+    
+    
+    function validated(){
+        if (de.value.length < 9) {
+            de.style.border = "1px solid red";
+            de_error.style.display = "block";
+            de.focus();
+            return false;
+        }
+      
+    
+    }
+    function de_Verify(){
+        if (de.value.length >= 8) {
+            de.style.border = "1px solid silver";
+            de_error.style.display = "none";
+            return true;
+        }
+    }
+    
+    
+    
+    </script>
+    	<script>									
+
+function validateSubmit() {
+                         result = confirm("Êtes-vous sur de vouloir ajouter ?");
+                        if (result) {
+                           $('#form').submit();
+                           
+                        
+                                  }
+                        }
+                        </script>	
+
+{% endblock %}

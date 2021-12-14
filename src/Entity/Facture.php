@@ -2,48 +2,122 @@
 
 namespace App\Entity;
 
+use App\Repository\FactureRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Facture
- *
- * @ORM\Table(name="facture", indexes={@ORM\Index(name="idCommande", columns={"idCommande"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=FactureRepository::class)
  */
 class Facture
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="idFacture", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\Column(type="integer")
      */
-    private $idfacture;
+    private $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="etatPayment", type="integer", nullable=false)
+     * @ORM\Column(type="string", length=255)
+      * @Assert\Length(
+     *      min = 3,
+     *      max = 10,
+     *      minMessage = "Le nom doit comporter au moins {{ limit }} caractères",
+     *      maxMessage = "Le nom  doit comporter au plus {{ limit }} caractères"
+     * )
      */
-    private $etatpayment;
+    private $de;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="dateFacture", type="integer", nullable=false)
+     * @ORM\Column(type="string", length=255)
      */
-    private $datefacture;
+    private $numeroFacture;
 
     /**
-     * @var \Commande
-     *
-     * @ORM\ManyToOne(targetEntity="Commande")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idCommande", referencedColumnName="idCommande")
-     * })
+     * @ORM\Column(type="date")
+     *    * * @Assert\Range(
+     *      min = "first day of January",
+     *      max = "first day of January next year"
+     * )
      */
-    private $idcommande;
+    private $Date;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $designation;
+  /**
+     * @ORM\Column(type="integer", precision=10, scale=0)
+      * @Assert\NotEqualTo("0")
+     */
+   
+     
+    
+    private $montant;
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getDe(): ?string
+    {
+        return $this->de;
+    }
+
+    public function setDe(string $de): self
+    {
+        $this->de = $de;
+
+        return $this;
+    }
+
+    public function getNumeroFacture(): ?string
+    {
+        return $this->numeroFacture;
+    }
+
+    public function setNumeroFacture(string $numeroFacture): self
+    {
+        $this->numeroFacture = $numeroFacture;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->Date;
+    }
+
+    public function setDate(\DateTimeInterface $Date): self 
+    {
+        $this->Date = $Date;
+
+        return $this;
+    }
+
+    public function getDesignation(): ?string
+    {
+        return $this->designation;
+    }
+
+    public function setDesignation(string $designation): self
+    {
+        $this->designation = $designation;
+
+        return $this;
+    }
+
+    public function getMontant(): ?int
+    {
+        return $this->montant;
+    }
+
+    public function setMontant(int $montant): self
+    {
+        $this->montant = $montant;
+
+        return $this;
+    }
 }
